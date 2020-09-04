@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Suspense,} from 'react';
+import {Provider} from 'react-redux';
 import './App.css';
+import RoutesComponent from 'shared/Routes/RoutesComponent';
+import { BrowserRouter as Router } from 'react-router-dom'
+import Spinner from 'components/Common/Spinner';
+import store from 'store/store';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<Spinner/>}>
+      <Provider store={store}>
+        <Router>
+          <RoutesComponent/>
+        </Router>
+      </Provider>
+    </Suspense>
   );
 }
 
