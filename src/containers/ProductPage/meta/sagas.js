@@ -21,23 +21,30 @@ function* fetchDetailAsync(action) {
   }
 }
 
-function* fetchListStart() {
-  yield takeLatest(
-    constants.GET_LIST,
-    fetchListAsync
-  );
-}
+// function* fetchListStart() {
+//   yield takeLatest(
+//     constants.GET_LIST,
+//     fetchListAsync
+//   );
+// }
 
-function* fetchDetailStart() {
-  yield takeLatest(
-    constants.GET_DETAIL,
-    fetchDetailAsync
-  );
-}
+// function* fetchDetailStart() {
+//   yield takeLatest(
+//     constants.GET_DETAIL,
+//     fetchDetailAsync
+//   );
+// }
 
-export function* productSaga() {
+// export function* productSaga() {
+//   yield all([
+//     call(fetchListStart),
+//     call(fetchDetailStart),
+//   ]);
+// }
+
+export default function* () {
   yield all([
-    call(fetchListStart),
-    call(fetchDetailStart),
-  ]);
+    yield takeLatest(constants.GET_DETAIL, fetchDetailAsync),
+    yield takeLatest(constants.GET_LIST, fetchListAsync),
+  ])
 }

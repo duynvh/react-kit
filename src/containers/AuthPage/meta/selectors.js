@@ -1,13 +1,18 @@
 import { createSelector } from 'reselect';
 
-const getAuth = state => state.auth;
+const selectRaw = state => state.auth;
 
 export const selectUser = createSelector(
-  [getAuth],
+  [selectRaw],
   auth => auth.user
 );
 
 export const selectIsAuthFetching = createSelector(
-  [getAuth],
+  [selectRaw],
   auth => auth.isFetching
+);
+
+export const selectAuthErrorMessage = createSelector(
+  [selectRaw], 
+  auth => auth.errorMessage
 );

@@ -22,18 +22,27 @@ const Auth = (state = initialState, action) =>
         draft.isFetching = true;
         break;
 
-      case constants.GET_AUTH_SUCCESS:
+      case constants.SIGNIN_SUCCESS:
+      case constants.SIGNUP_SUCCESS:
         draft.token = action.payload.token;
         draft.user = action.payload.user;
         draft.isFetching = false;
         draft.isAuthenticated = true;
         break;
 
-      case constants.GET_AUTH_ERROR:
-          draft.isFetching = false;
-          draft.errorMessage = action.payload.error;
-          break;
-
+      case constants.SIGNIN_ERROR:
+      case constants.SIGNUP_ERROR:
+      case constants.CHANGE_PASSWORD_ERROR:
+      case constants.SEND_RESET_PASSWORD_ERROR:
+        draft.isFetching = false;
+        draft.errorMessage = action.payload.error;
+        break;
+        
+      case constants.CHANGE_PASSWORD_SUCCESS:
+      case constants.SEND_RESET_PASSWORD_SUCCESS:
+        draft.isFetching = false;
+        break;
+      
       case constants.LOGOUT:
         delete draft.token;
         delete draft.user;
