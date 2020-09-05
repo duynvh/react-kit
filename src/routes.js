@@ -7,6 +7,7 @@ const publicRoutes = [
     path: "/products",
     exact: true,
     loader: () => import("containers/ProductPage"),
+    permission: "products-visit"
   },
 ];
 
