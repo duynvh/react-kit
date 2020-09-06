@@ -1,7 +1,5 @@
 # React kit
 
-Created by: duynvh
-
 # What it does
 
 Source is built for follow convention, design pattern, best practice of React. This project will develop continiously. If you contribute or detect errors in source, please provide issue for me. I will check and reply for you. Best regards
