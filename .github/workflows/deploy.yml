@@ -9,16 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Publish to Hub Docker Registry
+      - name: Checkout code
         uses: actions/checkout@v2
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Publish to Hub Docker Registry
+        uses: docker/build-push-action@v1
         with:
-          script: |
-            docker build -t nguyenvohoangduy/react-kit .
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push nguyenvohoangduy/react-kit
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: nguyenvohoangduy/react-kit
+          tags: latest
       # - name: Copy file via scp
       #   uses: appleboy/scp-action@master
       #   env:
