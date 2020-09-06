@@ -18,7 +18,7 @@ jobs:
           script: |
             docker build -t nguyenvohoangduy/react-kit .
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push react-kit
+            docker push nguyenvohoangduy/react-kit
       # - name: Copy file via scp
       #   uses: appleboy/scp-action@master
       #   env:
