@@ -1,5 +1,5 @@
-import React from 'react';
-import { Spin } from 'antd';
+import React from 'react'
+import { Spin } from 'antd'
 
 const Spinner = () => (
   <div
@@ -14,6 +14,6 @@ const Spinner = () => (
   >
     <Spin />
   </div>
-);
+)
 
-export default Spinner;
+export default Spinner

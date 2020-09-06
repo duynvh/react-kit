@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-const ProductPage = (props) => {
-  const [products, setProducts] = React.useState([]);
+const ProductPage = props => {
   useEffect(() => {
     const fetchProducts = async () => {
       const params = {
         _page: 1,
-        _limit: 10,
-      };
-      const response = await props.getList(params);
-      setProducts(response);
+        _limit: 10
+      }
+      await props.getList(params)
     }
-    
-    fetchProducts();
-  }, []);
+
+    fetchProducts()
+  }, [props])
 
   return (
     <div>
-      
+      {props.list.length > 0 &&
+        props.list.map(product => <li key={product.id}>{product.name}</li>)}
     </div>
   )
 }
@@ -27,7 +26,7 @@ ProductPage.propTypes = {
   getList: PropTypes.func,
   getDetail: PropTypes.func,
   list: PropTypes.array,
-  detail: PropTypes.object,
-};
+  detail: PropTypes.object
+}
 
-export default ProductPage;
+export default React.memo(ProductPage)

@@ -1,30 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Select } from 'antd';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Form, Select } from 'antd'
 
 function SelectField(props) {
-  const { field, form, options, label, placeholder, disabled } = props;
-  const { name } = field;
-  const selectedOption = options.find(option => option.value === value);
-  const { errors, touched } = form;
-  const showError = errors[name] && touched[name];
+  const { field, form, options, label, placeholder, disabled } = props
+  const { name } = field
+  const selectedOption = options.find(option => option.value === value)
+  const { errors, touched } = form
+  const showError = errors[name] && touched[name]
 
-  const handleSelectedOptionChange = (selectedOption) => {
-    const selectedValue = selectedOption ? selectedOption.value : selectedOption;
+  const handleSelectedOptionChange = selectedOption => {
+    const selectedValue = selectedOption ? selectedOption.value : selectedOption
     const changeEvent = {
       target: {
         name,
-        value: selectedValue,
+        value: selectedValue
       }
-    };
+    }
 
-    field.onChange(changeEvent);
+    field.onChange(changeEvent)
   }
 
   return (
     <Form>
       {label && <label for={name}>{label}</label>}
-      <Select 
+      <Select
         id={name}
         value={selectedOption}
         onChange={handleSelectedOptionChange}
@@ -42,14 +42,14 @@ SelectField.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
-  options: PropTypes.array,
-};
+  options: PropTypes.array
+}
 
 SelectField.defaultProps = {
   label: '',
   placeholder: '',
   disabled: false,
-  options: [],
-};
+  options: []
+}
 
 export default SelectField

@@ -1,27 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Input } from 'antd';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Form, Input } from 'antd'
 
 function InputField(props) {
-  const {
-    field, form,
-    type, label, placeholder, disabled
-  } = props;
-
-  const { name } = field;
-  const { errors, touched } = form;
-  const showError = errors[name] && touched[name];
+  const { name, type, label, rules } = props
 
   return (
-    <Form>
-      {label && <label for={name}>{label}</label>}
-      <Input 
-        type={type}
-        id={name}
-        invalid={showError}
-        {...field}
-      />
-    </Form>
+    <>
+      {label && <label htmlFor={name}>{label}</label>}
+      <Input type={type} id={name} {...props} />
+    </>
   )
 }
 
@@ -33,13 +21,13 @@ InputField.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool
-};
+}
 
 InputField.defaultProps = {
   type: 'text',
   label: '',
   placeholder: '',
   disabled: false
-};
+}
 
 export default InputField

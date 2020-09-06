@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ErrorWrapper = styled.div`
   .exception {
@@ -13,7 +13,7 @@ const ErrorWrapper = styled.div`
       zoom: 1;
       &:before,
       &:after {
-        content: " ";
+        content: ' ';
         display: table;
       }
       &:after {
@@ -48,7 +48,7 @@ const ErrorWrapper = styled.div`
       }
       .actions {
         button:not(:last-child) {
-            margin-right: 8px;
+          margin-right: 8px;
         }
       }
     }
@@ -78,6 +78,6 @@ const ErrorWrapper = styled.div`
       }
     }
   }
-`;
+`
 
-export default ErrorWrapper;
+export default ErrorWrapper

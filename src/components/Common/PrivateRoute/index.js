@@ -25,31 +25,30 @@
 
 // export default PrivateRoute;
 
-import React, { useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { isAuthenticated } from 'utils/cookie';
+import React, { useEffect } from 'react'
+import { Redirect, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { isAuthenticated } from 'utils/cookie'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const currentUser = useSelector();
-  const dispatch = useDispatch();
+  const currentUser = useSelector()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isAuthenticated()) {
-
     }
 
     if (!currentUser && isAuthenticated()) {
-      dispatch();
+      dispatch()
     }
-  });
+  })
 
   return (
-    <Route 
+    <Route
       {...rest}
-      render={props => 
+      render={props =>
         !isAuthenticated() ? (
-          <Redirect 
+          <Redirect
             to={{
               pathname: '/signin',
               state: { from: props.location }
@@ -61,6 +60,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       }
     />
   )
-};
+}
 
-export default PrivateRoute;
+export default PrivateRoute

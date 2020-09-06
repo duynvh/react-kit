@@ -1,7 +1,7 @@
-import React from 'react';
-import ErrorWrapper from './styles/ErrorWrapper';
-import {Link} from 'react-router-dom';
-import { Button } from 'antd';
+import React from 'react'
+import ErrorWrapper from './styles/ErrorWrapper'
+import { Link } from 'react-router-dom'
+import { Button } from 'antd'
 
 const Error500Page = () => {
   return (
@@ -11,7 +11,7 @@ const Error500Page = () => {
           <div
             className="imgEle"
             style={{
-                backgroundImage: `url(/images/500.svg)`
+              backgroundImage: `url(/images/500.svg)`
             }}
           />
         </div>
@@ -21,15 +21,13 @@ const Error500Page = () => {
           <div className="desc">Lỗi máy chủ, vui lòng quay lại sau</div>
           <div className="actions">
             <Link to="/">
-              <Button type="primary">
-                Quay lại trang chủ
-              </Button>
+              <Button type="primary">Quay lại trang chủ</Button>
             </Link>
           </div>
         </div>
       </div>
     </ErrorWrapper>
   )
-};
+}
 
-export default Error500Page;
+export default Error500Page

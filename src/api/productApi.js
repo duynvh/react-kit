@@ -1,15 +1,15 @@
-import network from 'utils/network';
+import network from 'utils/network'
 
 const productApi = {
   getAll: (params = {}) => {
-    const url = '/products';
-    return network.getData(url, params);
+    const url = '/products'
+    return network.getData(url, params)
   },
 
-  get: (id) => {
-    const url = `/products/${id}`;
-    return network.getData(url);
-  },
-};
+  get: id => {
+    const url = `/products/${id}`
+    return network.getData(url)
+  }
+}
 
-export default productApi;
+export default productApi

@@ -11,7 +11,7 @@
 //   return (
 //     <Route
 //       exact={exact}
-//       render={props => 
+//       render={props =>
 //         isAuthenticated ? (
 //           <Redirect to="/" />
 //         ) : (
@@ -23,11 +23,11 @@
 // }
 
 // export default PublicRoute;
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react'
+import { Route } from 'react-router-dom'
 
-const PublicRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => <Component {...props} />} />
-);
+const PublicRoute = ({ component: Component, ...rest }) => {
+  return <Route {...rest} render={props => <Component {...props} />} />
+}
 
-export default PublicRoute;
+export default PublicRoute

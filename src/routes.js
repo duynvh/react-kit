@@ -1,70 +1,69 @@
-const privateRoutes = [
-
-];
+const privateRoutes = []
 
 const publicRoutes = [
   {
-    path: "/products",
+    key: '/products',
+    path: '/products',
     exact: true,
-    loader: () => import("containers/ProductPage"),
-    permission: "products-visit"
-  },
-];
+    loader: () => import('containers/ProductPage'),
+    permission: 'products:visit'
+  }
+]
 
 const errorRoutes = [
   {
-    path: "/401",
+    path: '/401',
     exact: true,
-    loader: () => import("shared/Error/Error401Page"),
+    loader: () => import('shared/Error/Error401Page')
   },
   {
-    path: "/403",
+    path: '/403',
     exact: true,
-    loader: () => import("shared/Error/Error403Page"),
+    loader: () => import('shared/Error/Error403Page')
   },
   {
-    path: "/404",
+    path: '/404',
     exact: true,
-    loader: () => import("shared/Error/Error404Page"),
+    loader: () => import('shared/Error/Error404Page')
   },
   {
-    path: "/500",
+    path: '/500',
     exact: true,
-    loader: () => import("shared/Error/Error500Page"),
-  },
-];
+    loader: () => import('shared/Error/Error500Page')
+  }
+]
 
-// const authRoutes = [
-//   {
-//     path: "/signin",
-//     exact: true,
-//     loader: () => import("./AuthPage/SigninPage"),
-//   },
-//   {
-//     path: "/signup",
-//     exact: true,
-//     loader: () => import("./AuthPage/SignupPage"),
-//   },
-//   {
-//     path: "/password-reset",
-//     exact: true,
-//     loader: () => import("./AuthPage/SendResetPasswordPage"),
-//   },
-//   {
-//     path: "/new-password",
-//     exact: true,
-//     loader: () => import("./AuthPage/ChangePasswordPage"),
-//   },
-//   {
-//     path: "/verify-email",
-//     exact: true,
-//     loader: () => import("./AuthPage/VerifyEmailPage"),
-//   }
-// ];
+const authRoutes = [
+  {
+    path: '/signin',
+    exact: true,
+    loader: () => import('containers/AuthPage/pages/SigninPage')
+  }
+  // {
+  //   path: "/signup",
+  //   exact: true,
+  //   loader: () => import("./AuthPage/SignupPage"),
+  // },
+  // {
+  //   path: "/password-reset",
+  //   exact: true,
+  //   loader: () => import("./AuthPage/SendResetPasswordPage"),
+  // },
+  // {
+  //   path: "/new-password",
+  //   exact: true,
+  //   loader: () => import("./AuthPage/ChangePasswordPage"),
+  // },
+  // {
+  //   path: "/verify-email",
+  //   exact: true,
+  //   loader: () => import("./AuthPage/VerifyEmailPage"),
+  // }
+]
 
 export default {
   privateRoutes,
   publicRoutes,
   errorRoutes,
-  // authRoutes,
-};
+  authRoutes
+}
