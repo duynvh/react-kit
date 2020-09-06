@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Publish to Hub Docker Registry
         uses: actions/checkout@v2
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         with:
-          env:
-            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           script: |
             docker build -t nguyenvohoangduy/react-kit .
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
