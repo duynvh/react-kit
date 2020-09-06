@@ -13,10 +13,10 @@ EXPOSE 80
 
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build/ /usr/share/nginx/html
 
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+# COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
-COPY --from=builder /nginx.conf /etc/nginx/conf.d/default.conf
+# COPY --from=builder /nginx.conf /etc/nginx/conf.d/default.conf
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
