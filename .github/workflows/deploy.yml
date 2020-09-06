@@ -29,13 +29,14 @@ jobs:
       # with:
       #   source: '.'
       #   target: '/opt/app'
-      - name: Executing remote  command
+      - name: Deploy package to ec2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
           PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSH_KEY }}
+          # KEY: ${{ secrets.SSH_KEY }}
           script: |
             docker pull nguyenvohoangduy/react-kit:latest
             docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
