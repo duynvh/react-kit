@@ -26,9 +26,9 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
-        with:
-          source: '.'
-          target: '/opt/app'
+        # with:
+        #   source: '.'
+        #   target: '/opt/app'
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
         with:
@@ -37,8 +37,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull duynvh/react-kit:latest
-            docker run -dit -p 80:80 duynvh/react-kit:latest
+            docker pull nguyenvohoangduy/react-kit:latest
+            docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
       # - name: Publish to Github Packages Registry
       #   uses: elgohr/Publish-Docker-Github-Action@master
       #   with:
