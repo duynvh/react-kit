@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Publish to Hub Docker Registry
       - uses: actions/checkout@v2
-      - name: Use Node.js 13.10
       - run: docker build -t nguyenvohoangduy/react-kit .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
