@@ -19,7 +19,26 @@ jobs:
             docker build -t nguyenvohoangduy/react-kit .
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push react-kit
-
+      - name: Copy file via scp
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+        with:
+          source: '.'
+          target: '/opt/app'
+      - name: Executing remote  command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: |
+            docker pull duynvh/react-kit:latest
+            docker run -dit -p 80:80 duynvh/react-kit:latest
       # - name: Publish to Github Packages Registry
       #   uses: elgohr/Publish-Docker-Github-Action@master
       #   with:
