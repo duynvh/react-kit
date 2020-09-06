@@ -38,8 +38,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           # KEY: ${{ secrets.SSH_KEY }}
           script: |
-            docker pull nguyenvohoangduy/react-kit:latest
-            docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
+            sudo docker pull nguyenvohoangduy/react-kit:latest
+            sudo docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
       # - name: Publish to Github Packages Registry
       #   uses: elgohr/Publish-Docker-Github-Action@master
       #   with:
