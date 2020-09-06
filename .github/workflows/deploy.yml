@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
+          KEY: ${{ secrets.SSH_KEY }}
           script: |
             docker pull duynvh/react-kit:latest
             docker run -dit -p 80:80 duynvh/react-kit:latest
