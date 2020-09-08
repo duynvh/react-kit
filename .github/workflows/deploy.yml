@@ -1,67 +1,67 @@
-name: deploy
+# name: deploy
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Publish to Hub Docker Registry
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: nguyenvohoangduy/react-kit
-          tags: latest
-      # - name: Copy file via scp
-      #   uses: appleboy/scp-action@master
-      #   env:
-      #     HOST: ${{ secrets.HOST }}
-      #     USERNAME: ${{ secrets.USERNAME }}
-      #     PORT: ${{ secrets.PORT }}
-      #     KEY: ${{ secrets.SSH_KEY }}
-      # with:
-      #   source: '.'
-      #   target: '/opt/app'
-      - name: Deploy package to ec2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          PORT: ${{ secrets.PORT }}
-          # KEY: ${{ secrets.SSH_KEY }}
-          script: |
-            docker rm -f $(docker ps -aq)
-            docker pull nguyenvohoangduy/react-kit:latest
-            docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
-      # - name: Publish to Github Packages Registry
-      #   uses: elgohr/Publish-Docker-Github-Action@master
-      #   with:
-      #     name: duynvh/react-kit/react-kit
-      #     registry: docker.pkg.github.com
-      #     username: ${{ secrets.GITHUB_USERNAME }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #     dockerfile: Dockerfile
-      #     tags: latest
-      # - name: Deploy package to vps
-      #   uses: appleboy/ssh-action@master
-      #   env:
-      #     GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     port: ${{ secrets.PORT }}
-      #     envs: GITHUB_USERNAME, GITHUB_TOKEN
-      #     script: |
-      #       docker stop $(docker ps -a -q)
-      #       docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
-      #       docker pull docker.pkg.github.com/duynvh/react-kit/react-kit:latest
-      #       docker run -dit -p 80:80 docker.pkg.github.com/duynvh/react-kit/react-kit:latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#       - name: Publish to Hub Docker Registry
+#         uses: docker/build-push-action@v1
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#           repository: nguyenvohoangduy/react-kit
+#           tags: latest
+#       # - name: Copy file via scp
+#       #   uses: appleboy/scp-action@master
+#       #   env:
+#       #     HOST: ${{ secrets.HOST }}
+#       #     USERNAME: ${{ secrets.USERNAME }}
+#       #     PORT: ${{ secrets.PORT }}
+#       #     KEY: ${{ secrets.SSH_KEY }}
+#       # with:
+#       #   source: '.'
+#       #   target: '/opt/app'
+#       - name: Deploy package to ec2
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           PORT: ${{ secrets.PORT }}
+#           # KEY: ${{ secrets.SSH_KEY }}
+#           script: |
+#             docker rm -f $(docker ps -aq)
+#             docker pull nguyenvohoangduy/react-kit:latest
+#             docker run -dit -p 80:80 nguyenvohoangduy/react-kit:latest
+#       # - name: Publish to Github Packages Registry
+#       #   uses: elgohr/Publish-Docker-Github-Action@master
+#       #   with:
+#       #     name: duynvh/react-kit/react-kit
+#       #     registry: docker.pkg.github.com
+#       #     username: ${{ secrets.GITHUB_USERNAME }}
+#       #     password: ${{ secrets.GITHUB_TOKEN }}
+#       #     dockerfile: Dockerfile
+#       #     tags: latest
+#       # - name: Deploy package to vps
+#       #   uses: appleboy/ssh-action@master
+#       #   env:
+#       #     GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+#       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       #   with:
+#       #     host: ${{ secrets.HOST }}
+#       #     username: ${{ secrets.USERNAME }}
+#       #     password: ${{ secrets.PASSWORD }}
+#       #     port: ${{ secrets.PORT }}
+#       #     envs: GITHUB_USERNAME, GITHUB_TOKEN
+#       #     script: |
+#       #       docker stop $(docker ps -a -q)
+#       #       docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+#       #       docker pull docker.pkg.github.com/duynvh/react-kit/react-kit:latest
+#       #       docker run -dit -p 80:80 docker.pkg.github.com/duynvh/react-kit/react-kit:latest
