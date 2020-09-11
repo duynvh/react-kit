@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import i18n from 'utils/i18n';
+import i18n from 'utils/i18n'
 import { Provider } from 'react-redux'
 import 'antd/dist/antd.css'
 import RoutesComponent from 'shared/Routes/RoutesComponent'
@@ -8,11 +8,11 @@ import Spinner from 'components/Common/Spinner'
 import store from 'store/store'
 
 // the hoc
-import { withTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next'
 
 function App({ t }) {
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng)
   }
 
   return (
@@ -29,4 +29,4 @@ function App({ t }) {
   )
 }
 
-export default withTranslation()(App);
+export default withTranslation()(App)
